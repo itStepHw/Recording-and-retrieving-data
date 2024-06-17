@@ -1,0 +1,30 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'post/style.css' %}">
+</head>
+<body>
+    <h2>Список постов</h2>
+
+    {% for post in data %}
+        <div>
+            <a href="{% url 'post_info' post_id=post.id %}">{{forloop.counter0}}..{{post.id}}. {{post.title}}</a>
+            <p>
+                {{post.content}}<br/>
+                {{post.description}}<br/>
+                {{post.category}}<br/>
+                {{post.published_date}}<br/>
+                {{post.is_published}}<br/>
+            </p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
